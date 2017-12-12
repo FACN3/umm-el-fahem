@@ -15,10 +15,15 @@ const headers = {
 
 const handlers = {
   homeHandler: (req, res) => {
-    const url = req.url;
+
+    let url = req.url;
+    if (url == '/signup') {
+      url = '/public/signup.html';
+    }
     const filePath = url === '/' ?
       path.join(__dirname, "..", "public/index.html") :
       path.join(__dirname, "..", url);
+
     // console.log('filePath', filePath);
     fs.readFile(filePath,
       (err, file) => {
@@ -55,7 +60,9 @@ const handlers = {
     });
     //to stay on the homepage after pressing login
     //use status code 302 and header Location
-    res.writeHead(302, {Location : '/'});
+    res.writeHead(302, {
+      Location: '/'
+    });
     res.end()
   }
 };
