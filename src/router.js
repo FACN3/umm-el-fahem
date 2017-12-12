@@ -1,5 +1,5 @@
-const fs = require('fs');
-const handlers = require('./handler.js')
+const fs = require("fs");
+const handlers = require("./handler.js");
 
 homepages = ["/", "/public/style.css", "/public/index.js"];
 
@@ -8,12 +8,11 @@ const router = (req, res) => {
   let url = req.url;
   if (homepages.includes(url)) {
     handlers.homeHandler(req, res);
-  }else{
-    handlers.notFoundHandler(req,res);
+  } else if (url === "/login") {
+    handlers.handlerLogin(req, res);
+  } else {
+    handlers.notFoundHandler(req, res);
   }
-
-}
-
-
+};
 
 module.exports = router;

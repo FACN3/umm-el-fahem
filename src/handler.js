@@ -43,6 +43,20 @@ const handlers = {
       'Content-Type': 'text/html'
     });
     res.end('<h1>NOT FOUND</h1>');
+  },
+
+  handlerLogin: (req, res) => {
+    let data = "";
+    req.on("data", chunk => {
+      data += chunk;
+    });
+    req.on("end", () => {
+      console.log(data);
+    });
+    //to stay on the homepage after pressing login
+    //use status code 302 and header Location
+    res.writeHead(302, {Location : '/'});
+    res.end()
   }
 };
 
