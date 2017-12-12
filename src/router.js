@@ -1,7 +1,7 @@
 const fs = require("fs");
 const handlers = require("./handler.js");
 
-homepages = ["/", "/public/style.css", "/public/index.js"];
+homepages = ["/", "/public/style.css", "/public/index.js", "/signup"];
 
 const router = (req, res) => {
   console.log(req.url);
@@ -10,7 +10,7 @@ const router = (req, res) => {
     handlers.homeHandler(req, res);
   } else if (url === "/login") {
     handlers.handlerLogin(req, res);
-  } else {
+  }else {
     handlers.notFoundHandler(req, res);
   }
 };
