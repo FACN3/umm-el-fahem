@@ -3,6 +3,7 @@ const path = require('path');
 const qs = require('querystring');
 //const add_user = require('../db/add_user');
 const hashPassword = require('./encryption');
+const userValidation = require('../db/login');
 
 const headers = {
   html: {
@@ -57,7 +58,8 @@ const handlers = {
       data += chunk;
     });
     req.on('end', () => {
-      console.log(data);
+      let user =qs.parse(data);
+      userValidation(user.user_name, user.password);
     });
     //to stay on the homepage after pressing login
     //use status code 302 and header Location
