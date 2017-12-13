@@ -14,6 +14,8 @@ const router = (req, res) => {
     handlers.handlerAddUser(req, res);
   } else if (url === '/add_article') {
     handlers.handlerAddArticle(req,res);
+  } else if(url === '/posts'){
+    handlers.handlerPosts(req, res);
   }
   else{
     handlers.notFoundHandler(req, res);

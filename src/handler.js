@@ -5,6 +5,7 @@ const add_article = require("../db/add_article");
 const hashPassword = require("./encryption");
 const userValidation = require("../db/login");
 const cookie_validation = require("./jwt_validation");
+const posts = require("../db/posts");
 
 const headers = {
   html: {
@@ -121,6 +122,18 @@ const handlers = {
         res.writeHead(302, { Location: "/" });
         res.end();
       }
+    });
+  },
+  handlerPosts: (req, res) => {
+    posts((err, post) => {
+      if (err) {
+        console.log(err);
+        res.end();
+      }
+      else {
+      res.writeHead(200, { 'Content-Type': "application/json" });
+      res.end(JSON.stringify(post));
+    }
     });
   }
 };
