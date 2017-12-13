@@ -4,19 +4,26 @@
 <head>
   <meta charset="utf-8">
   <title>umm-el-fahem</title>
+
 </head>
 
 <body>
-  <input id='login' type="submit" value="Login" />
-
+  <ul class="topnav">
+    <input id='login' type="submit" class="right" value="Login" />
+  </ul>
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <form action="/login" id="login_form" method="post">
+      <form action="/login" id="login_form" class="form--login" method="post">
+        <br>
+        <br>
         <input type="text" name="user_name" id="user_name" placeholder="username" required>
+        <br>
         <input type="password" name="password" id="password" placeholder="password" required>
-        <button type="submit" >Log in</button>
+        <br>
+        <button type="submit">Log in</button>
       </form>
+      <br>
       <label>If your new</label><a href="/signup">SignUp</a>
     </div>
   </div>
@@ -29,11 +36,12 @@
   <input form='posting_form' type="submit" value="Add Article">
 
   <div id="container">
-  </div>  
+  </div>
 
 
 
 </body>
+<link rel="stylesheet" href="public/style.css">
 <script src='public/index.js'></script>
 
 </html>

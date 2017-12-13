@@ -1,13 +1,16 @@
-const { sign, verify } = require("jsonwebtoken");
+const cookie_signature = require("cookie-signature");
+const jwt=require('jsonwebtoken');
 
 const secret = "ummelfahem";
 
 const create_cookie = user => {
+  let hashedId =  jwt.sign(user.user_id , secret);
   let cookie = {
-    id: user.user_id,
+    id: hashedId,
+    name: user.user_name,
     rights: user.rights
   };
-  return sign(cookie, secret);
+  return cookie_signature.sign(JSON.stringify(cookie), secret);
 
 };
 

@@ -18,6 +18,6 @@ const options = {
   ssl: params.hostname !== 'localhost'
 };
 
-console.log('options', options);
+// console.log('options', options);
 
 module.exports = new Pool(options);
