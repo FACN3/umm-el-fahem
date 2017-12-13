@@ -12,7 +12,8 @@ const hashPassword = data => {
           console.log(err);
         } else {
           data.password = hash;
-          console.log('data after encryption', data);
+          //console.log('data after encryption', data);
+          //console.log('add_functions: ',add_functions);
           add_user(data);
         }
       });

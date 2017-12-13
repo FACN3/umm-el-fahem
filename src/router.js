@@ -12,7 +12,10 @@ const router = (req, res) => {
     handlers.handlerLogin(req, res);
   } else if (url === '/add_user') {
     handlers.handlerAddUser(req, res);
-  } else {
+  } else if (url === '/add_article') {
+    handlers.handlerAddArticle(req,res);
+  }
+  else{
     handlers.notFoundHandler(req, res);
   }
 };
