@@ -1,9 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const qs = require("querystring");
-//const add_user = require('../db/add_user');
+const add_article = require("../db/add_article");
 const hashPassword = require("./encryption");
 const userValidation = require("../db/login");
+const cookie_validation = require("./jwt_validation");
 
 const headers = {
   html: {
@@ -70,18 +71,12 @@ const handlers = {
           console.log("THIS IS THE COOKiE: ", jwt);
           res.writeHead(302, {
             "Set-Cookie": `user=${jwt}; Max-Age=9000`,
-            Location: '/'
+            Location: "/"
           });
           res.end();
         }
       });
     });
-    //to stay on the homepage after pressing login
-    //use status code 302 and header Location
-    // res.writeHead(302, {
-    //   Location: "/"
-    // });
-    // res.end();
   },
   handlerAddUser: (req, res) => {
     let data = "";
@@ -96,6 +91,37 @@ const handlers = {
       Location: "/"
     });
     res.end();
+  },
+  handlerAddArticle: (req, res) => {
+    cookie_validation(req.headers.cookie, (err, unhashed_cookie) => {
+      console.log("req method:", req.method);
+      if (err) {
+        console.log("unhashing error", err);
+        res.writeHead(401, { "Content-Type": "text/html" });
+        res.end("<h1>You need to log in</h1>");
+      } else if (req.method === "POST") {
+        let data = "";
+        req.on("data", chunk => {
+          data += chunk;
+        });
+        req.on("end", () => {
+          let data_obj = qs.parse(data);
+          console.log(data_obj);
+          let article_data = [
+            unhashed_cookie.id,
+            data_obj.title,
+            data_obj.content
+          ];
+          add_article(article_data, () => {
+            res.writeHead(302, { Location: "/" });
+            res.end();
+          });
+        });
+      } else {
+        res.writeHead(302, { Location: "/" });
+        res.end();
+      }
+    });
   }
 };
 
