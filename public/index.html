@@ -20,6 +20,15 @@
       <label>If your new</label><a href="/signup">SignUp</a>
     </div>
   </div>
+  <br>
+  <form id="posting_form" action="/add_article" method="post">
+    <input type="text" id="title" name="title" placeholder="Title">
+  </form>
+  <textarea form='posting_form' rows="8" cols="80" name='content' placeholder="Article content..."></textarea>
+  <input form='posting_form' type="file" name="image" value="">
+  <input form='posting_form' type="submit" value="Add Article">
+
+
 
 </body>
 <script src='public/index.js'></script>
