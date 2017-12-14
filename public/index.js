@@ -2,11 +2,15 @@ var modal = document.getElementById('modal');
 var btn = document.getElementById("login");
 var span = document.getElementsByClassName("close")[0];
 var articleBtn = document.getElementById('article_button');
-if (document.cookie) {
-  btn.value = JSON.parse(document.cookie.split('user=')[1].split("}.")[0] + "}").name;
-  articleBtn.style.display = "flex";
-}
 
+try {
+  if (document.cookie) {
+    btn.value = JSON.parse(document.cookie.split('user=')[1].split("}.")[0] + "}").name;
+    articleBtn.style.display = "flex";
+  }
+}catch(e){
+  document.cookie = "";
+}
 articleBtn.onclick = function() {
   if (articleBtn.textContent === "Add new article") {
     document.getElementsByClassName('div--post')[0].style.display = "flex";
@@ -37,6 +41,7 @@ window.onclick = function(event) {
 
 function displayPosts(arr) {
   console.log('arr:', arr);
+  arr.reverse();
   var container = document.getElementById('container');
   arr.forEach(function(post) {
     var div = document.createElement('div');
@@ -51,7 +56,6 @@ function displayPosts(arr) {
     container.appendChild(div);
   });
 }
-
 (function() {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {

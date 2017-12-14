@@ -5,13 +5,17 @@
     <title>umm-el-fahem</title>
   </head>
   <body>
-    <form class="" action="/add_user" method="post">
-      <input type="text" id='singup_user_name' name="user_name" placeholder="user_name">
-      <input type="password" id='singup_password' name="password" placeholder="password">
-      <input type="password" id='singup_confirm_password' name="confirm_password" placeholder="confirm password">
-      <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id='singup_email' name="email" placeholder="Email">
-      <input type="date" id='singup_dob' name="date_of_birth">
+    <form class="form--signup" action="/add_user" onsubmit="return samepassword()" method="post">
+      <input type="text" id='singup_user_name' name="user_name" placeholder="user_name" required>
+      <input type="password" id='singup_password' name="password" placeholder="password" required>
+      <input type="password" id='singup_confirm_password' name="confirm_password" placeholder="confirm password" required>
+      <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id='singup_email' name="email" placeholder="Email" required>
+      <input type="date" id='singup_dob' name="date_of_birth" required>
       <input type="submit" id='signup_submit' name="submit" value="submit">
     </form>
+    <label></label>
   </body>
+  <link rel="stylesheet" href="public/style.css">
+  <script src='public/signup.js'></script>
+
 </html>
