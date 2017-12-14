@@ -4,7 +4,7 @@ const handlers = require('./handler.js');
 homepages = ['/', '/public/style.css', '/public/index.js', '/signup'];
 
 const router = (req, res) => {
-  console.log(req.url);
+  // console.log(req.url);
   let url = req.url;
   if (homepages.includes(url)) {
     handlers.homeHandler(req, res);

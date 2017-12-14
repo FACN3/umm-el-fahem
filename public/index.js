@@ -1,4 +1,24 @@
-console.log('i run');
+console.log(document.cookie);
+
+var modal = document.getElementById('modal');
+var btn = document.getElementById("login");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "flex";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
 
 function displayPosts(arr) {
   console.log('arr:', arr);
@@ -12,6 +32,7 @@ function displayPosts(arr) {
     var author = document.createElement('span');
     div.appendChild(title);
     div.appendChild(content);
+    div.classList.add('div--article');
     container.appendChild(div);
   });
 }

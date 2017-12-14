@@ -6,7 +6,7 @@ const posts = (cb)=>{
       cb(err);
     }
     else {
-      console.log('post.rows:', post.rows);
+      // console.log('post.rows:', post.rows);
       cb(null, post.rows);
     }
   });

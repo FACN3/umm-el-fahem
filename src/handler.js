@@ -6,6 +6,8 @@ const hashPassword = require("./encryption");
 const userValidation = require("../db/login");
 const cookie_validation = require("./jwt_validation");
 const posts = require("../db/posts");
+const jwt = require('jsonwebtoken');
+const secret = "ummelfahem";
 
 const headers = {
   html: {
@@ -107,9 +109,9 @@ const handlers = {
         });
         req.on("end", () => {
           let data_obj = qs.parse(data);
-          console.log(data_obj);
+          let userId = jwt.verify(JSON.parse(unhashed_cookie).id,secret);
           let article_data = [
-            unhashed_cookie.id,
+            userId,
             data_obj.title,
             data_obj.content
           ];
