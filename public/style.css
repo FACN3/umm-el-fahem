@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #F3FAB6;
 }
 
 #container {
@@ -91,7 +92,7 @@ ul.topnav li a.active {
   /* Could be more or less, depending on screen size */
 }
 
-.modal-content input[type=text], input[type=password] {
+.modal-content input[type=text],.modal-content input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -132,6 +133,25 @@ img.avatar {
   display: flex;
   flex-direction: column;
 }*/
+.form--signup{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form--signup input{
+  margin: 5px 0 5px 0;
+}
+
+.form--signup input[type=submit]{
+  border: none;
+  background-color: #333;
+  padding: 10px 0 10px 0;
+  color:white;
+}
+
 
 .div--post {
   width: 60%;
@@ -182,6 +202,8 @@ img.avatar {
   margin-bottom: 50px;
   padding-bottom: 40px;
   border-bottom: outset;
+  overflow-wrap: break-word;
+
 }
 
 .div--article h2 {

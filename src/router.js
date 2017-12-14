@@ -1,7 +1,7 @@
 const fs = require('fs');
 const handlers = require('./handler.js');
 
-homepages = ['/', '/public/style.css', '/public/index.js', '/signup'];
+homepages = ['/', '/public/style.css','/public/signup.js', '/public/index.js', '/signup'];
 
 const router = (req, res) => {
   // console.log(req.url);
