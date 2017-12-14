@@ -7,7 +7,9 @@ const userValidation = require("../db/login");
 const cookie_validation = require("./jwt_validation");
 const posts = require("../db/posts");
 const jwt = require('jsonwebtoken');
-const secret = "ummelfahem";
+require('env2')('config.env');
+
+
 
 const headers = {
   html: {
@@ -71,7 +73,6 @@ const handlers = {
           res.writeHead(200, { "Content-Type": "text/html" });
           res.end("user does not exist");
         } else {
-          console.log("THIS IS THE COOKiE: ", jwt);
           res.writeHead(302, {
             "Set-Cookie": `user=${jwt}; Max-Age=9000`,
             Location: "/"
@@ -109,7 +110,7 @@ const handlers = {
         });
         req.on("end", () => {
           let data_obj = qs.parse(data);
-          let userId = jwt.verify(JSON.parse(unhashed_cookie).id,secret);
+          let userId = jwt.verify(JSON.parse(unhashed_cookie).id, process.env.SECRET);
           let article_data = [
             userId,
             data_obj.title,
