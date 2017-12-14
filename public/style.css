@@ -8,6 +8,7 @@ body {
 }
 
 /* navbar design */
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -27,9 +28,24 @@ ul.topnav input {
   float: right;
 }
 
-ul.topnav input:hover:not(.active) {
+ul.topnav button {
+  display: none;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  float: right;
+}
+
+ul.topnav button:hover:not(.active), ul.topnav input:hover:not(.active) {
   cursor: pointer;
   background-color: #111;
+}
+
+ul.topnav button {
+  float: left;
 }
 
 ul.topnav li a.active {
@@ -37,58 +53,143 @@ ul.topnav li a.active {
 }
 
 /* modal design */
+
 /* The Modal (background) */
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    overflow: auto;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  overflow: auto;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  border: 3px solid #f1f1f1;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
+
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    flex-direction: column;
-    width: 80%; /* Could be more or less, depending on screen size */
+  background-color: #fefefe;
+  margin: auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  display: table;
+  flex-direction: column;
+  width: 60%;
+  /* Could be more or less, depending on screen size */
 }
-.form--login{
+
+.modal-content input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.modal-content button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.modal-content button:hover {
+  opacity: 0.8;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 2% 0 2% 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.form--login {
+  padding: 16px;
+}
+
+/*.form--login {
   display: flex;
   flex-direction: column;
+}*/
+
+.div--post {
+  width: 60%;
+  margin: 0 auto;
+  display: none;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.div--post input[type=text] {
+  width: 98%;
+  margin: 0 auto;
+}
+
+.div--post input[type=submit] {
+  border: none;
+  width: 70%;
+  margin: 0 auto;
+  background-color: #333;
+  color: white;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 /* The Close Button */
+
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
-
 
 /* article design */
+
 .div--article {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   text-align: justify;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding-bottom: 40px;
+  border-bottom: outset;
 }
 
 .div--article h2 {
   align-self: center;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav button ,ul.topnav input {
+    float: none;
+  }
 }

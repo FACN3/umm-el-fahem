@@ -1,11 +1,26 @@
-console.log(document.cookie);
-
 var modal = document.getElementById('modal');
 var btn = document.getElementById("login");
 var span = document.getElementsByClassName("close")[0];
+var articleBtn = document.getElementById('article_button');
+if (document.cookie) {
+  btn.value = JSON.parse(document.cookie.split('user=')[1].split("}.")[0] + "}").name;
+  articleBtn.style.display = "flex";
+}
+
+articleBtn.onclick = function() {
+  if (articleBtn.textContent === "Add new article") {
+    document.getElementsByClassName('div--post')[0].style.display = "flex";
+    articleBtn.textContent = 'Close';
+  } else {
+    document.getElementsByClassName('div--post')[0].style.display = "none";
+    articleBtn.textContent = 'Add new article';
+  }
+}
 
 btn.onclick = function() {
-  modal.style.display = "flex";
+  if (btn.value === 'Login') {
+    modal.style.display = "flex";
+  }
 }
 
 span.onclick = function() {

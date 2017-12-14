@@ -10,31 +10,39 @@
 <body>
   <ul class="topnav">
     <input id='login' type="submit" class="right" value="Login" />
+    <button type="button" id="article_button" class="button--article" name="button">Add new article</button>
   </ul>
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
+      <div class="imgcontainer">
+        <img src='https://cdn-images-1.medium.com/max/300/1*9U6m8MyiSdcIJ1Fes2kivw.png' alt="Avatar" class="avatar">
+      </div>
       <form action="/login" id="login_form" class="form--login" method="post">
-        <br>
-        <br>
+
+        <label><b>Username</b></label>
         <input type="text" name="user_name" id="user_name" placeholder="username" required>
-        <br>
+        <label><b>Password</b></label>
         <input type="password" name="password" id="password" placeholder="password" required>
-        <br>
+
         <button type="submit">Log in</button>
       </form>
-      <br>
-      <label>If your new</label><a href="/signup">SignUp</a>
+      <div class="container" style="background-color:#f1f1f1">
+        <label class="psw">If your new </label><a href="/signup">SignUp</a>
+      </div>
     </div>
   </div>
   <br>
-  <form id="posting_form" action="/add_article" method="post">
-    <input type="text" id="title" name="title" placeholder="Title">
-  </form>
-  <textarea form='posting_form' rows="8" cols="80" name='content' placeholder="Article content..."></textarea>
-  <input form='posting_form' type="file" name="image" value="">
-  <input form='posting_form' type="submit" value="Add Article">
-
+  <div id='postin_div' class="div--post">
+    <form id="posting_form" action="/add_article" method="post">
+      <input type="text" id="title" name="title" placeholder="Title">
+    </form>
+    <br>
+    <textarea form='posting_form' rows="8" cols="80" name='content' placeholder="Article content..."></textarea>
+    <input form='posting_form' type="file" name="image" value="">
+    <br>
+    <input form='posting_form' type="submit" value="Add Article">
+  </div>
   <div id="container">
   </div>
 
